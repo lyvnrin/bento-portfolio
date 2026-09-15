@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import StickerPeel from './components/StickerPeel/StickerPeel'
+import BentoGrid from './components/BentoGrid/BentoGrid'
 import './App.css'
 
 const STICKER_PLACEHOLDER = `data:image/svg+xml,${encodeURIComponent(
@@ -25,7 +26,7 @@ function App() {
 
   return (
     <div className="bento-stage">
-      <div className="bento-base" />
+      <BentoGrid />
       <div className="lid" ref={lidRef}>
         <span className="lid-text">peel the sticker</span>
         <StickerPeel

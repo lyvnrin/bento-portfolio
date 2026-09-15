@@ -5,13 +5,6 @@
   perspective: 1200px;
 }
 
-.bento-base {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background: #a03623;
-}
-
 .lid {
   position: absolute;
   inset: 0;
