@@ -2,24 +2,26 @@ import './BentoGrid.css'
 
 const EXPERIENCE = [
   {
-    role: '2026 — BA (Smart Tech) Intern @ TCS',
-    description: 'Working on smart technology initiatives across the summer internship program.',
+    role: 'Business Analyst Intern, AI & ST — TCS · Summer 2026',
+    description: 'Working at the intersection of emerging tech and strategy, still chasing problems that are genuinely hard.',
   },
   {
-    role: '2025 — Data Science Coursework Project',
-    description: 'Built a classification pipeline as part of coursework, from data cleaning to evaluation.',
+    role: 'BFSI Data Lab Spring Intern — TCS · 2025',
+    description: "Explored data workflows within TCS's Banking, Financial Services & Insurance division.",
   },
   {
-    role: '2024 — Freelance Web Developer',
-    description: 'Delivered small business sites end to end, from design handoff to deployment.',
-  },
-  {
-    role: '2023 — Campus Tech Club Lead',
-    description: 'Organized workshops and led a small team of student contributors.',
+    role: 'FinTech Work Experience — HSBC · 2022',
+    description: 'Early exposure to banking systems and financial data at HSBC.',
   },
 ]
 
-const CONTACT_LINKS = ['cv', 'linkedin', 'github', 'credly', 'email']
+const CONTACT_LINKS = [
+  { label: 'cv', href: 'https://lavanyakamble.vercel.app/LavanyaKamble-CV.pdf' },
+  { label: 'linkedin', href: 'https://www.linkedin.com/in/lavanyakamble/' },
+  { label: 'github', href: 'https://github.com/lyvnrin' },
+  { label: 'credly', href: 'https://www.credly.com/users/lavanya-kamble.73b64a62' },
+  { label: 'email', href: 'mailto:lavanya.kamble6@gmail.com' },
+]
 
 function BentoGrid({ projects, skills, activeItem, onToggleProject, onToggleSkill }) {
   return (
@@ -28,7 +30,7 @@ function BentoGrid({ projects, skills, activeItem, onToggleProject, onToggleSkil
         <section className="bento-panel bento-identity">
           <h1 className="bento-name">Lavanya Kamble</h1>
           <p className="bento-subtitle">
-            aspiring data scientist | bsc computer science student | BA summer intern @ TCS
+            penultimate year cs student @ royal holloway | full-stack developer | summer intern @ TCS, AI & ST
           </p>
         </section>
 
@@ -89,11 +91,19 @@ function BentoGrid({ projects, skills, activeItem, onToggleProject, onToggleSkil
         <section className="bento-panel bento-contact">
           <nav className="bento-contact-links">
             <span className="bento-heading bento-contact-title">contact</span>
-            {CONTACT_LINKS.map((link) => (
-              <a href="#" key={link}>
-                {link}
-              </a>
-            ))}
+            {CONTACT_LINKS.map(({ label, href }) => {
+              const isExternal = !href.startsWith('mailto:')
+              return (
+                <a
+                  href={href}
+                  key={label}
+                  target={isExternal ? '_blank' : undefined}
+                  rel={isExternal ? 'noopener noreferrer' : undefined}
+                >
+                  {label}
+                </a>
+              )
+            })}
           </nav>
         </section>
       </div>

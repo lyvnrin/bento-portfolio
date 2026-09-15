@@ -5,7 +5,7 @@ import BentoGrid from './components/BentoGrid/BentoGrid'
 import TableSpill from './components/TableSpill/TableSpill'
 import './App.css'
 
-const PROJECTS = ['project 1', 'project 2', 'project 3', 'project 4', 'project 5']
+const PROJECTS = ['oaxaca', 'valora', 'sort it out']
 const SKILLS = ['ai', 'data', 'design', 'scripting', 'tools']
 
 const STICKER_PLACEHOLDER = `data:image/svg+xml,${encodeURIComponent(

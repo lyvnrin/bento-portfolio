@@ -264,7 +264,7 @@
 
 .bento-contact-links a:hover {
   opacity: 1;
-  text-decoration: underline;
+  color: #c4a246;
 }
 
 .no-scrollbar {

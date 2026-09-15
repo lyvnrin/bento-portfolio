@@ -12,63 +12,50 @@ function useLastTruthy(value) {
 }
 
 const PROJECT_INFO = {
-  'project 1': {
-    name: 'project one',
-    description: 'A short placeholder description.',
-    tech: 'react, node, postgres',
+  oaxaca: {
+    name: 'oaxaca',
+    description: 'A full-stack restaurant management system, end to end.',
+    tech: 'react, fastapi, sqlite',
+    link: 'https://github.com/lyvnrin/oaxaca',
   },
-  'project 2': {
-    name: 'project two',
-    description: 'A short placeholder description.',
-    tech: 'python, pandas, scikit-learn',
+  valora: {
+    name: 'valora',
+    description: 'An AI-powered financial chatbot for economic insight.',
+    tech: 'react, python',
+    link: 'https://github.com/lyvnrin/Valora',
   },
-  'project 3': {
-    name: 'project three',
-    description: 'A short placeholder description.',
-    tech: 'figma, react, css',
-  },
-  'project 4': {
-    name: 'project four',
-    description: 'A short placeholder description.',
-    tech: 'typescript, express, mongodb',
-  },
-  'project 5': {
-    name: 'project five',
-    description: 'A short placeholder description.',
-    tech: 'next.js, tailwind, vercel',
+  'sort it out': {
+    name: 'sort it out',
+    description: 'An interactive sorting algorithm visualiser.',
+    tech: 'react, javascript',
+    link: 'https://sorting-visualiser-lk.vercel.app/',
   },
 }
 
 const SKILL_POSITIONS = {
   ai: [
-    { name: 'TensorFlow', right: '5vw', bottom: '22vh', rotate: '2deg' },
-    { name: 'PyTorch', right: '14vw', bottom: '12vh', rotate: '-1deg' },
-    { name: 'scikit-learn', right: '9vw', bottom: '6vh', rotate: '4deg' },
-    { name: 'OpenCV', right: '3vw', bottom: '15vh', rotate: '-2deg' },
+    { name: 'Claude Code', right: '6vw', bottom: '18vh', rotate: '2deg' },
+    { name: 'GitHub Copilot', right: '15vw', bottom: '10vh', rotate: '-2deg' },
   ],
   data: [
-    { name: 'Python', right: '6vw', bottom: '20vh', rotate: '-3deg' },
-    { name: 'SQL', right: '16vw', bottom: '10vh', rotate: '2deg' },
-    { name: 'Pandas', right: '10vw', bottom: '26vh', rotate: '-1deg' },
-    { name: 'Tableau', right: '3vw', bottom: '13vh', rotate: '4deg' },
+    { name: 'NumPy', right: '6vw', bottom: '20vh', rotate: '-3deg' },
+    { name: 'PostgreSQL', right: '16vw', bottom: '10vh', rotate: '2deg' },
+    { name: 'MS Excel', right: '10vw', bottom: '26vh', rotate: '-1deg' },
   ],
   design: [
     { name: 'Figma', right: '8vw', bottom: '7vh', rotate: '3deg' },
-    { name: 'Canva', right: '17vw', bottom: '17vh', rotate: '-2deg' },
-    { name: 'CSS', right: '4vw', bottom: '23vh', rotate: '1deg' },
-    { name: 'Photoshop', right: '12vw', bottom: '11vh', rotate: '-4deg' },
+    { name: 'Lovable', right: '17vw', bottom: '17vh', rotate: '-2deg' },
+    { name: 'HTML/CSS', right: '4vw', bottom: '23vh', rotate: '1deg' },
   ],
   scripting: [
-    { name: 'JavaScript', right: '12vw', bottom: '18vh', rotate: '-2deg' },
-    { name: 'Python', right: '4vw', bottom: '25vh', rotate: '3deg' },
-    { name: 'Bash', right: '15vw', bottom: '8vh', rotate: '1deg' },
-    { name: 'Node.js', right: '7vw', bottom: '14vh', rotate: '-3deg' },
+    { name: 'Python', right: '12vw', bottom: '18vh', rotate: '-2deg' },
+    { name: 'JavaScript', right: '4vw', bottom: '25vh', rotate: '3deg' },
+    { name: 'Java', right: '15vw', bottom: '8vh', rotate: '1deg' },
   ],
   tools: [
     { name: 'Git', right: '5vw', bottom: '9vh', rotate: '2deg' },
-    { name: 'Docker', right: '15vw', bottom: '21vh', rotate: '-3deg' },
-    { name: 'VS Code', right: '9vw', bottom: '5vh', rotate: '3deg' },
-    { name: 'Linux', right: '3vw', bottom: '17vh', rotate: '-1deg' },
+    { name: 'Linux/WSL', right: '15vw', bottom: '21vh', rotate: '-3deg' },
+    { name: 'React', right: '9vw', bottom: '5vh', rotate: '3deg' },
   ],
 }
 
@@ -116,7 +103,7 @@ function ProjectSpill({ activeItem }) {
       <h3 className="spill-project-name">{info.name}</h3>
       <p className="spill-project-desc">{info.description}</p>
       <p className="spill-project-tech">tech stack: {info.tech}</p>
-      <a href="#" className="spill-project-link">
+      <a href={info.link} target="_blank" rel="noopener noreferrer" className="spill-project-link">
         view project &#8594;
       </a>
     </div>
