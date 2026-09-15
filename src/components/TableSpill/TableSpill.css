@@ -1,6 +1,8 @@
 .spill-project {
   position: absolute;
   z-index: 10;
+  top: 8vh;
+  right: 5vw;
   width: 200px;
   background: #f0e8dc;
   padding: 14px;
@@ -45,20 +47,18 @@
   text-decoration: underline;
 }
 
-.spill-skill-row {
+.spill-skill-cluster {
   position: absolute;
+  inset: 0;
   z-index: 10;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  max-width: 260px;
   opacity: 0;
+  pointer-events: none;
 }
 
 .spill-logo {
-  width: 48px;
+  position: absolute;
+  width: 58px;
   aspect-ratio: 1;
-  flex: 0 0 auto;
   background: #f0e8dc;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   display: flex;
@@ -71,6 +71,6 @@
 .spill-logo span {
   font-family: var(--font-body);
   color: var(--color-lid);
-  font-size: 0.52rem;
+  font-size: 0.56rem;
   line-height: 1.2;
 }

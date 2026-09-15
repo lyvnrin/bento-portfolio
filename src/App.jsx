@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import StickerPeel from './components/StickerPeel/StickerPeel'
 import BentoGrid from './components/BentoGrid/BentoGrid'
@@ -16,8 +16,21 @@ function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [stickerResetKey, setStickerResetKey] = useState(0)
   const [activeItem, setActiveItem] = useState(null)
+  const [finishMealRight, setFinishMealRight] = useState(0)
   const lidRef = useRef(null)
+  const bentoStageRef = useRef(null)
   const didMount = useRef(false)
+
+  useLayoutEffect(() => {
+    const measure = () => {
+      const rect = bentoStageRef.current?.getBoundingClientRect()
+      if (rect) setFinishMealRight(window.innerWidth - rect.left + 20)
+    }
+
+    measure()
+    window.addEventListener('resize', measure)
+    return () => window.removeEventListener('resize', measure)
+  }, [])
 
   useEffect(() => {
     if (!didMount.current) {
@@ -64,7 +77,7 @@ function App() {
 
   return (
     <>
-      <div className="bento-stage">
+      <div className="bento-stage" ref={bentoStageRef}>
         <BentoGrid
           projects={PROJECTS}
           skills={SKILLS}
@@ -92,9 +105,16 @@ function App() {
 
       <TableSpill activeItem={activeItem} />
 
-      <button type="button" className="finish-meal" onClick={handleFinishMeal}>
-        finish your meal
-      </button>
+      {isOpen && (
+        <button
+          type="button"
+          className="finish-meal"
+          style={{ right: `${finishMealRight}px` }}
+          onClick={handleFinishMeal}
+        >
+          finish your meal
+        </button>
+      )}
     </>
   )
 }
