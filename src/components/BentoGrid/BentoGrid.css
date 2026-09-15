@@ -80,10 +80,6 @@
   flex-direction: column;
 }
 
-.bento-experience .bento-heading {
-  font-size: clamp(1.15rem, 2.6vw, 1.4rem);
-}
-
 .bento-experience-list {
   flex: 1;
   overflow-y: auto;
@@ -133,7 +129,7 @@
   align-items: center;
   gap: 12px;
   overflow-x: auto;
-  padding: 4px 28px;
+  padding: 4px 0;
 }
 
 .bento-project-card {
@@ -181,44 +177,43 @@
 /* Skills */
 .bento-skills-row {
   display: flex;
-  gap: 14px;
-  flex-wrap: nowrap;
-}
-
-.bento-skill {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 6px;
+  gap: 10px;
 }
 
 .bento-skill-box {
-  width: clamp(28px, 4vw, 42px);
-  aspect-ratio: 1 / 1;
+  flex: 1;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: #e8dfd0;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.bento-skill-label {
   font-family: var(--font-body);
-  color: var(--color-lid-text);
+  color: #6b1e13;
   text-transform: lowercase;
-  font-size: clamp(0.58rem, 1vw, 0.72rem);
+  text-align: center;
+  font-size: clamp(0.6rem, 1.3vw, 0.85rem);
+  padding: 4px;
 }
 
 /* Contact */
 .bento-contact {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
+  align-items: center;
+  padding-top: clamp(5px, 1vw, 9px);
+  padding-bottom: clamp(5px, 1vw, 9px);
 }
 
 .bento-contact-links {
   display: flex;
-  justify-content: space-evenly;
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
   gap: 8px;
+}
+
+.bento-contact-title {
+  margin: 0;
 }
 
 .bento-contact-links a {

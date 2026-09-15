@@ -21,7 +21,7 @@ const EXPERIENCE = [
 
 const PROJECTS = ['project 1', 'project 2', 'project 3', 'project 4', 'project 5']
 const SKILLS = ['ai', 'data', 'design', 'scripting', 'tools']
-const CONTACT_LINKS = ['cv', 'linkedin', 'github', 'credits', 'email']
+const CONTACT_LINKS = ['cv', 'linkedin', 'github', 'credly', 'email']
 
 function BentoGrid() {
   return (
@@ -71,17 +71,16 @@ function BentoGrid() {
           <h2 className="bento-heading">Skills</h2>
           <div className="bento-skills-row">
             {SKILLS.map((skill) => (
-              <div className="bento-skill" key={skill}>
-                <div className="bento-skill-box" />
-                <span className="bento-skill-label">{skill}</span>
+              <div className="bento-skill-box" key={skill}>
+                {skill}
               </div>
             ))}
           </div>
         </section>
 
         <section className="bento-panel bento-contact">
-          <h2 className="bento-heading">Contact</h2>
           <nav className="bento-contact-links">
+            <span className="bento-heading bento-contact-title">contact</span>
             {CONTACT_LINKS.map((link) => (
               <a href="#" key={link}>
                 {link}
