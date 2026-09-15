@@ -19,11 +19,9 @@ const EXPERIENCE = [
   },
 ]
 
-const PROJECTS = ['project 1', 'project 2', 'project 3', 'project 4', 'project 5']
-const SKILLS = ['ai', 'data', 'design', 'scripting', 'tools']
 const CONTACT_LINKS = ['cv', 'linkedin', 'github', 'credly', 'email']
 
-function BentoGrid() {
+function BentoGrid({ projects, skills, activeItem, onToggleProject, onToggleSkill }) {
   return (
     <div className="bento-base">
       <div className="bento-col bento-col-left">
@@ -55,11 +53,16 @@ function BentoGrid() {
             &#8249;
           </span>
           <div className="bento-projects-row no-scrollbar">
-            {PROJECTS.map((project) => (
-              <div className="bento-project-card" key={project}>
+            {projects.map((project) => (
+              <button
+                type="button"
+                className={`bento-project-card${activeItem?.type === 'project' && activeItem.id === project ? ' active' : ''}`}
+                key={project}
+                onClick={() => onToggleProject(project)}
+              >
                 <div className="bento-project-thumb" />
                 <span className="bento-project-label">{project}</span>
-              </div>
+              </button>
             ))}
           </div>
           <span className="bento-scroll-arrow bento-scroll-arrow--right" aria-hidden="true">
@@ -70,10 +73,15 @@ function BentoGrid() {
         <section className="bento-panel bento-skills">
           <h2 className="bento-heading">Skills</h2>
           <div className="bento-skills-row">
-            {SKILLS.map((skill) => (
-              <div className="bento-skill-box" key={skill}>
+            {skills.map((skill) => (
+              <button
+                type="button"
+                className={`bento-skill-box${activeItem?.type === 'skill' && activeItem.id === skill ? ' active' : ''}`}
+                key={skill}
+                onClick={() => onToggleSkill(skill)}
+              >
                 {skill}
-              </div>
+              </button>
             ))}
           </div>
         </section>

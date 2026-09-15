@@ -1,0 +1,76 @@
+.spill-project {
+  position: absolute;
+  z-index: 10;
+  width: 200px;
+  background: #f0e8dc;
+  padding: 14px;
+  opacity: 0;
+}
+
+.spill-project-name {
+  margin: 0 0 6px;
+  font-family: var(--font-display);
+  color: var(--color-lid);
+  text-transform: lowercase;
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.spill-project-desc {
+  margin: 0 0 6px;
+  font-family: var(--font-body);
+  color: var(--color-lid);
+  font-size: 0.72rem;
+  line-height: 1.4;
+}
+
+.spill-project-tech {
+  margin: 0 0 6px;
+  font-family: var(--font-body);
+  color: var(--color-lid);
+  font-size: 0.62rem;
+  opacity: 0.55;
+}
+
+.spill-project-link {
+  display: inline-block;
+  font-family: var(--font-body);
+  color: var(--color-lid);
+  text-transform: lowercase;
+  font-size: 0.7rem;
+  text-decoration: none;
+}
+
+.spill-project-link:hover {
+  text-decoration: underline;
+}
+
+.spill-skill-row {
+  position: absolute;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  max-width: 260px;
+  opacity: 0;
+}
+
+.spill-logo {
+  width: 48px;
+  aspect-ratio: 1;
+  flex: 0 0 auto;
+  background: #f0e8dc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4px;
+}
+
+.spill-logo span {
+  font-family: var(--font-body);
+  color: var(--color-lid);
+  font-size: 0.52rem;
+  line-height: 1.2;
+}
