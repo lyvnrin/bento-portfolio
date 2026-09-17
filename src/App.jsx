@@ -2,7 +2,7 @@ import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { gsap } from 'gsap'
 import StickerPeel from './components/StickerPeel/StickerPeel'
 import BentoGrid from './components/BentoGrid/BentoGrid'
-import TableSpill from './components/TableSpill/TableSpill'
+import ChopstickLift from './components/ChopstickLift/ChopstickLift'
 import './App.css'
 
 const PROJECTS = ['oaxaca', 'valora', 'sort it out']
@@ -15,7 +15,8 @@ const STICKER_PLACEHOLDER = `data:image/svg+xml,${encodeURIComponent(
 function App() {
   const [isOpen, setIsOpen] = useState(false)
   const [stickerResetKey, setStickerResetKey] = useState(0)
-  const [activeItem, setActiveItem] = useState(null)
+  const [liftedItem, setLiftedItem] = useState(null)
+  const [peeledExperience, setPeeledExperience] = useState(null)
   const [finishMealRight, setFinishMealRight] = useState(0)
   const lidRef = useRef(null)
   const bentoStageRef = useRef(null)
@@ -53,25 +54,38 @@ function App() {
   }, [isOpen])
 
   const toggleProject = (id) => {
-    setActiveItem((prev) => (prev?.type === 'project' && prev.id === id ? null : { type: 'project', id }))
+    const next = liftedItem?.type === 'project' && liftedItem.id === id ? null : { type: 'project', id }
+    setLiftedItem(next)
+    // a chopstick-lifted project brings the full-screen overlay, so any peeled
+    // nigiri needs to fold back first — skills close for free since they share
+    // liftedItem with projects
+    if (next?.type === 'project') setPeeledExperience(null)
   }
 
   const toggleSkill = (id) => {
-    setActiveItem((prev) => (prev?.type === 'skill' && prev.id === id ? null : { type: 'skill', id }))
+    setLiftedItem((prev) => (prev?.type === 'skill' && prev.id === id ? null : { type: 'skill', id }))
   }
+
+  const toggleExperience = (role) => {
+    setPeeledExperience((prev) => (prev === role ? null : role))
+  }
+
+  const setDown = () => setLiftedItem(null)
 
   const handleFinishMeal = () => {
     if (!isOpen) return
 
-    const hadActiveItem = activeItem !== null
-    setActiveItem(null)
+    // set the lifted item back down first, then close the lid over a clear bento
+    const hadLiftedItem = liftedItem !== null
+    setLiftedItem(null)
+    setPeeledExperience(null)
 
     setTimeout(
       () => {
         setIsOpen(false)
         setStickerResetKey((key) => key + 1)
       },
-      hadActiveItem ? 250 : 0,
+      hadLiftedItem ? 320 : 0,
     )
   }
 
@@ -81,9 +95,11 @@ function App() {
         <BentoGrid
           projects={PROJECTS}
           skills={SKILLS}
-          activeItem={activeItem}
+          liftedItem={liftedItem}
           onToggleProject={toggleProject}
           onToggleSkill={toggleSkill}
+          peeledExperience={peeledExperience}
+          onToggleExperience={toggleExperience}
         />
         <div className="lid" ref={lidRef}>
           <span className="lid-text">peel the sticker</span>
@@ -103,7 +119,7 @@ function App() {
         </div>
       </div>
 
-      <TableSpill activeItem={activeItem} />
+      <ChopstickLift liftedItem={liftedItem} onSetDown={setDown} />
 
       {isOpen && (
         <button

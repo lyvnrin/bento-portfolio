@@ -1,0 +1,132 @@
+.lift-overlay {
+  /* position/size/background/blur/z-index are set inline in JSX so they can't be
+     clipped or overridden by an ancestor's stacking context */
+  border: none;
+  padding: 0;
+  margin: 0;
+  appearance: none;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.lift-card {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  cursor: pointer;
+  will-change: transform;
+}
+
+/* pair of chopsticks straddling the lifted item's top-right corner like two
+   fingers picking up a piece of paper — stick a rests on top (in front of the
+   card), stick b goes underneath (behind the card, above the overlay). each
+   anchor is a plain (unanimated) point pinned by JS to the card's real corner;
+   the inner wrapper only carries the slide animation, and each stick's own
+   rotation pivots on its tip so the pinch point never moves */
+.lift-chopsticks-anchor {
+  position: fixed;
+  pointer-events: none;
+}
+
+.lift-chopsticks-anchor--front {
+  z-index: 1002;
+}
+
+.lift-chopsticks-anchor--back {
+  z-index: 1000;
+}
+
+.lift-chopsticks {
+  position: relative;
+  width: 0;
+  height: 0;
+  will-change: transform;
+}
+
+.lift-chopstick {
+  position: absolute;
+  width: 8px;
+  height: 420px;
+  /* full 8px width for almost the whole length (including the ~80-100px that
+     stays on screen), tapering to a 3px tip only over the last 20px */
+  clip-path: polygon(0% 0%, 100% 0%, 100% 95%, 69% 100%, 31% 100%, 0% 95%);
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  transform-origin: bottom center;
+  transform: rotate(45deg);
+}
+
+/* tip overlaps the card's face, ~18px in from the corner */
+.lift-chopstick--a {
+  left: -15px;
+  bottom: -15px;
+  background: #c4956a;
+}
+
+/* roughly parallel to stick a, offset ~7px so the two read as straddling
+   the corner rather than converging on one point */
+.lift-chopstick--b {
+  left: -10px;
+  bottom: -20px;
+  background: #b8875e;
+}
+
+/* separate layer so the "floating above the table" shadow can fade with the lift */
+.lift-card-shadow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0;
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.3),
+    0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Project — styled like the back-of-packet label on a snack box */
+.lift-card--project {
+  background: #f0e8dc;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.lift-thumb {
+  width: 100%;
+  height: 190px;
+  background: #e8dfd0;
+}
+
+.lift-package-name {
+  margin: 0;
+  padding: 12px 20px 2px;
+  font-family: var(--font-display);
+  color: #1c1614;
+  text-transform: lowercase;
+  text-align: left;
+  font-size: 1.4rem;
+  letter-spacing: 0.02em;
+}
+
+.lift-package-section {
+  padding: 6px 20px;
+}
+
+.lift-ingredients {
+  margin: 0;
+  font-family: var(--font-body);
+  color: #1c1614;
+  font-size: 0.7rem;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.lift-tech-list {
+  margin: 0;
+  font-family: var(--font-body);
+  color: #1c1614;
+  font-size: 0.7rem;
+  line-height: 1.25;
+  text-align: left;
+}
+
+.lift-package-section:last-of-type {
+  padding-bottom: 16px;
+}
+
